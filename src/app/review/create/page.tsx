@@ -38,8 +38,9 @@ const CreateReview = () => {
         },
         body: JSON.stringify(data),
       });
+      const addedReview = await response.json();
 
-      router.push("/");
+      router.push(`/review/${addedReview.id}`);
     } catch (error) {
       setError("root", {
         message: "An error occurred while submitting the form",

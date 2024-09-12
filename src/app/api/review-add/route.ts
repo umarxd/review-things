@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    await db.review.create({
+    const addedReview = await db.review.create({
       data: {
         category: category,
         title: title,
@@ -20,12 +20,9 @@ export async function POST(req: Request) {
       },
     });
 
-    return new Response(
-      JSON.stringify({ category, title, reviewContent, rating }),
-      {
-        status: 200,
-      },
-    );
+    return new Response(JSON.stringify(addedReview), {
+      status: 200,
+    });
   } catch (error) {
     return new Response("Something went wrong.", { status: 500 });
   }
