@@ -38,7 +38,9 @@ export default function HomePage() {
   return (
     <div className="">
       {data ? (
-        data?.pages.map((reviewPage) => <ReviewsPage data={reviewPage} />)
+        data.pages.map((reviewPage, pageIndex) => (
+          <ReviewsPage key={pageIndex} data={reviewPage} />
+        ))
       ) : (
         <div>Loading</div>
       )}
