@@ -69,6 +69,7 @@ model Review {
   title         String   @db.VarChar(64)  // Allows 2-64 character text
   reviewContent String   @db.VarChar(512) // Allows 2-512 character text
   rating        Int                       // Integer from 0 to 10
+  createdAt     DateTime @default(now())
 
   @@index([userId])
 }
