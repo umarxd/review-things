@@ -7,7 +7,9 @@ export async function POST(req: Request) {
     const session = await getServerAuthSession();
 
     if (!session?.user) {
-      return new Response("Unauthorized", { status: 401 });
+      return new Response(JSON.stringify({ message: "Unauthorized" }), {
+        status: 401,
+      });
     }
 
     const addedReview = await db.review.create({
@@ -23,7 +25,10 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify(addedReview), {
       status: 200,
     });
-  } catch (error) {
-    return new Response("Something went wrong.", { status: 500 });
+  } catch (error: any) {
+    return new Response(
+      JSON.stringify({ message: error?.message || "Something went wrong." }),
+      { status: 500 },
+    );
   }
 }

@@ -30,22 +30,25 @@ const CreateReview = () => {
   });
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    try {
-      const response = await fetch("http://localhost:3000/api/review-add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const addedReview = await response.json();
+    const response = await fetch("http://localhost:3000/api/review-add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-      router.push(`/review/${addedReview.id}`);
-    } catch (error) {
+    if (!response.ok) {
+      const errorData = await response.json();
       setError("root", {
-        message: "An error occurred while submitting the form",
+        message:
+          errorData.message || "An error occurred while submitting the form",
       });
+      return;
     }
+
+    const addedReview = await response.json();
+    router.push(`/review/${addedReview.id}`);
   };
 
   return (
