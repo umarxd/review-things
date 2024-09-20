@@ -54,7 +54,7 @@ const CreateReview = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="justify-centers flex flex-col items-center"
+      className="justify-centers flex flex-col items-center text-black"
     >
       <input {...register("title")} type="text" placeholder="Title" />
       {errors.title && (

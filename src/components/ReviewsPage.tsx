@@ -1,4 +1,5 @@
 import React from "react";
+import Review from "./Review";
 
 type Review = {
   id: string;
@@ -20,9 +21,9 @@ interface DataProps {
 
 const ReviewsPage = ({ data }: { data: DataProps }) => {
   return (
-    <div>
+    <div className="">
       {data?.reviews.map((review, reviewIndex) => (
-        <div key={reviewIndex}>Review: {review.reviewContent}</div>
+        <Review review={review} key={reviewIndex} />
       ))}
     </div>
   );
