@@ -4,6 +4,8 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { Input } from "~/components/ui/input";
+import { Button } from "~/components/ui/button";
 
 const schema = z.object({
   title: z.string().min(1).max(64),
@@ -54,21 +56,21 @@ const CreateReview = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="justify-centers flex flex-col items-center text-black"
+      className="white mx-auto flex flex-col items-center justify-center gap-4 sm:w-[512px]"
     >
-      <input {...register("title")} type="text" placeholder="Title" />
+      <Input {...register("title")} type="text" placeholder="Title" />
       {errors.title && (
         <div className="text-red-500">{errors.title.message}</div>
       )}
-      <input {...register("category")} type="text" placeholder="Category" />
+      <Input {...register("category")} type="text" placeholder="Category" />
       {errors.category && (
         <div className="text-red-500">{errors.category.message}</div>
       )}
-      <input {...register("reviewContent")} type="text" placeholder="Review" />
+      <Input {...register("reviewContent")} type="text" placeholder="Review" />
       {errors.reviewContent && (
         <div className="text-red-500">{errors.reviewContent.message}</div>
       )}
-      <input
+      <Input
         {...register("rating", {
           setValueAs: (value) => parseInt(value),
         })}
@@ -77,9 +79,13 @@ const CreateReview = () => {
       {errors.rating && (
         <div className="text-red-500">{errors.rating.message}</div>
       )}
-      <button disabled={isSubmitting} type="submit">
+      <Button
+        disabled={isSubmitting}
+        className="border border-blue-500 hover:bg-blue-500"
+        type="submit"
+      >
         {isSubmitting ? "Loading..." : "Submit"}
-      </button>
+      </Button>
       {errors.root && (
         <div className="text-red-500">{errors.root?.message}</div>
       )}
