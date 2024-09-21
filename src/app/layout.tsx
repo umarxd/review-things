@@ -22,7 +22,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
 
-          <div className="h-screen py-8">{children}</div>
+          <div className="h-screen py-12">{children}</div>
         </Providers>
       </body>
     </html>
