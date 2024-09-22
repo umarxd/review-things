@@ -25,9 +25,6 @@ const CreateReview = () => {
     setError,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormFields>({
-    defaultValues: {
-      rating: 0,
-    },
     resolver: zodResolver(schema),
   });
 
@@ -75,6 +72,7 @@ const CreateReview = () => {
           setValueAs: (value) => parseInt(value),
         })}
         type="text"
+        placeholder="Rating 1 to 10"
       />
       {errors.rating && (
         <div className="text-red-500">{errors.rating.message}</div>
