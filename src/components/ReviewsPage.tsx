@@ -8,7 +8,7 @@ type Review = {
   title: string;
   reviewContent: string;
   rating: number;
-  createdAt: string; // ISO date string
+  createdAt: Date; // ISO date string
 };
 
 interface DataProps {

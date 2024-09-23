@@ -1,4 +1,5 @@
 import React from "react";
+import Review from "~/components/Review";
 import { db } from "~/server/db";
 
 interface ReviewPageProps {
@@ -12,19 +13,13 @@ const ReviewPage = async ({ params }: ReviewPageProps) => {
     where: {
       id: params.id,
     },
-    include: {
-      user: true,
-    },
   });
 
   if (!review) return <div>This review does not exist.</div>;
 
   return (
-    <div>
-      <div>Title: {review.title}</div>
-      <div>Review: {review.reviewContent}</div>
-      <div>Rating: {review.rating}/10</div>
-      <div>Category: {review.category}</div>
+    <div className="flex items-center justify-center">
+      <Review review={review} />
     </div>
   );
 };
