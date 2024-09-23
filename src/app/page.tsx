@@ -16,14 +16,7 @@ export default function HomePage() {
     } catch (error) {}
   };
 
-  const {
-    data,
-    error,
-    status,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
-  } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: ["reviews"],
     queryFn: ({ pageParam }) => fetchReviews(pageParam),
     initialPageParam: 1,
