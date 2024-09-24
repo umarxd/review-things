@@ -8,18 +8,9 @@ import {
   CardTitle,
 } from "./ui/card";
 import Link from "next/link";
+import { ReviewType } from "~/types/main-types";
 
-interface reviewProps {
-  id: string;
-  userId: string;
-  category: string;
-  title: string;
-  reviewContent: string;
-  rating: number;
-  createdAt: Date;
-}
-
-const Review = ({ review }: { review: reviewProps }) => {
+const Review = ({ review }: { review: ReviewType }) => {
   return (
     <Link href={`/review/${review.id}`}>
       <Card className="my-2 sm:w-[512px]">

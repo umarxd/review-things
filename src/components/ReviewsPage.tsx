@@ -1,21 +1,12 @@
 import React from "react";
 import Review from "./Review";
-
-type Review = {
-  id: string;
-  userId: string;
-  category: string;
-  title: string;
-  reviewContent: string;
-  rating: number;
-  createdAt: Date; // ISO date string
-};
+import { ReviewType } from "../types/main-types";
 
 interface DataProps {
   hasMore: boolean;
   page: number;
   pageSize: number;
-  reviews: Review[];
+  reviews: ReviewType[];
   totalReviews: number;
 }
 
