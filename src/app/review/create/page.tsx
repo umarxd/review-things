@@ -23,6 +23,7 @@ const CreateReview = () => {
     register,
     handleSubmit,
     setError,
+    setValue,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
@@ -59,10 +60,26 @@ const CreateReview = () => {
       {errors.title && (
         <div className="text-red-500">{errors.title.message}</div>
       )}
-      <Input {...register("category")} type="text" placeholder="Category" />
-      {errors.category && (
-        <div className="text-red-500">{errors.category.message}</div>
-      )}
+      <div className="w-full">
+        <Input {...register("category")} type="text" placeholder="Category" />
+        <div className="flex gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground">
+          {["Games", "Movies", "Books", "Food", "Tech", "Music"].map(
+            (category) => (
+              <div
+                key={category}
+                className="hover:cursor-pointer hover:text-foreground"
+                onClick={() => setValue("category", category)}
+              >
+                {category}
+              </div>
+            ),
+          )}
+        </div>
+
+        {errors.category && (
+          <div className="text-red-500">{errors.category.message}</div>
+        )}
+      </div>
       <Input {...register("reviewContent")} type="text" placeholder="Review" />
       {errors.reviewContent && (
         <div className="text-red-500">{errors.reviewContent.message}</div>
