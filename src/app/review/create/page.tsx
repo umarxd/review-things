@@ -62,7 +62,7 @@ const CreateReview = () => {
       )}
       <div className="w-full">
         <Input {...register("category")} type="text" placeholder="Category" />
-        <div className="flex gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground">
+        <div className="hidden gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground sm:flex">
           {["Games", "Movies", "Books", "Food", "Tech", "Music"].map(
             (category) => (
               <div
