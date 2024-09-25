@@ -30,7 +30,7 @@ const CreateReview = () => {
   });
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const response = await fetch("http://localhost:3000/api/review-add", {
+    const response = await fetch("http://localhost:3000/api/review/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

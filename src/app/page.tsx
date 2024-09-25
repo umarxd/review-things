@@ -8,7 +8,7 @@ export default function HomePage() {
   const fetchReviews = async (page: number) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/review-get?page=${page}&limit=3`,
+        `http://localhost:3000/api/review/get?page=${page}&limit=3`,
       );
 
       const currentReviews = await response.json();
