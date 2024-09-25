@@ -17,7 +17,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`dark ${robotoMono.className} `}>
+    <html lang="en" className={`dark bg-background ${robotoMono.className} `}>
       <body>
         <Providers>
           <Navbar />

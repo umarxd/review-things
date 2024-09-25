@@ -41,7 +41,7 @@ export default function HomePage() {
 
       {hasNextPage && (
         <Button
-          className="border border-blue-500 hover:bg-blue-500"
+          className="border hover:bg-destructive"
           onClick={() => fetchNextPage()}
         >
           Load more

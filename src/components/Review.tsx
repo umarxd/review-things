@@ -13,7 +13,7 @@ import { ReviewType } from "~/types/main-types";
 const Review = ({ review }: { review: ReviewType }) => {
   return (
     <Link href={`/review/${review.id}`}>
-      <Card className="my-2 sm:w-[512px]">
+      <Card className="my-2 border border-card-foreground sm:w-[512px]">
         <CardHeader>
           <CardTitle>{review.title}</CardTitle>
           <CardDescription>{review.category}</CardDescription>

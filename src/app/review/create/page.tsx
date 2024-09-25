@@ -62,7 +62,7 @@ const CreateReview = () => {
       )}
       <div className="w-full">
         <Input {...register("category")} type="text" placeholder="Category" />
-        <div className="hidden gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground sm:flex">
+        <div className="hidden gap-2 rounded-md border border-destructive px-3 py-2 text-sm text-muted-foreground sm:flex">
           {["Games", "Movies", "Books", "Food", "Tech", "Music"].map(
             (category) => (
               <div
@@ -96,7 +96,7 @@ const CreateReview = () => {
       )}
       <Button
         disabled={isSubmitting}
-        className="border border-blue-500 hover:bg-blue-500"
+        className="border hover:bg-destructive"
         type="submit"
       >
         {isSubmitting ? "Loading..." : "Submit"}
