@@ -15,6 +15,9 @@ export async function GET(req: Request) {
       skip: (pageNumber - 1) * pageSize,
       take: pageSize,
       orderBy: { createdAt: "desc" },
+      include: {
+        likes: true,
+      },
     });
 
     const totalReviews = await db.review.count();

@@ -13,6 +13,9 @@ const ReviewPage = async ({ params }: ReviewPageProps) => {
     where: {
       id: params.id,
     },
+    include: {
+      likes: true,
+    },
   });
 
   if (!review) return <div>This review does not exist.</div>;

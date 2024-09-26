@@ -1,3 +1,10 @@
+type Like = {
+  id: string;
+  userId: string;
+  reviewId: string;
+  createdAt: Date;
+};
+
 export type ReviewType = {
   id: string;
   userId: string;
@@ -5,5 +12,6 @@ export type ReviewType = {
   title: string;
   reviewContent: string;
   rating: number;
+  likes: Like[];
   createdAt: Date;
 };
