@@ -44,23 +44,28 @@ const Review = ({ review }: { review: ReviewType }) => {
   };
 
   return (
-    <Card className="my-2 border border-card-foreground sm:w-[512px]">
-      <CardHeader>
-        <Link href={`/review/${review.id}`}>
-          <CardTitle>{review.title}</CardTitle>
-        </Link>
-        <CardDescription>{review.category}</CardDescription>
-      </CardHeader>
+    <Card className="my-2 flex items-center justify-between border border-card-foreground sm:w-[512px]">
       <CardContent>
-        <p>{review.reviewContent}</p>
+        <CardHeader>
+          <Link href={`/review/${review.id}`}>
+            <CardTitle>{review.title}</CardTitle>
+          </Link>
+          <CardDescription>{review.category}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="font-semibold">{review.reviewContent}</p>
+        </CardContent>
+
+        <CardFooter>
+          <p className="font-semibold text-primary">{review.rating}/10</p>
+        </CardFooter>
       </CardContent>
       <CardContent>
-        <div onClick={handleLike}>Like</div>
+        <CardContent>
+          <div onClick={handleLike}>Like</div>
+        </CardContent>
+        <CardContent>{review.likes.length} Like/s</CardContent>
       </CardContent>
-      <CardContent>{review.likes.length} Like/s</CardContent>
-      <CardFooter>
-        <p>{review.rating}/10</p>
-      </CardFooter>
     </Card>
   );
 };

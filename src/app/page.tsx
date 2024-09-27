@@ -16,27 +16,28 @@ export default function HomePage() {
     } catch (error) {}
   };
 
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["reviews"],
-    queryFn: ({ pageParam }) => fetchReviews(pageParam),
-    initialPageParam: 1,
+  const { data, fetchNextPage, hasNextPage, error, isLoading } =
+    useInfiniteQuery({
+      queryKey: ["reviews"],
+      queryFn: ({ pageParam }) => fetchReviews(pageParam),
+      initialPageParam: 1,
 
-    getNextPageParam: (lastPage) => {
-      if (lastPage.hasMore == false) {
-        return null;
-      }
-      return lastPage.page + 1;
-    },
-  });
+      getNextPageParam: (lastPage) => {
+        if (lastPage.hasMore == false) {
+          return null;
+        }
+        return lastPage.page + 1;
+      },
+    });
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {data ? (
+      {data &&
         data.pages.map((reviewPage, pageIndex) => (
           <ReviewsPage key={pageIndex} data={reviewPage} />
-        ))
-      ) : (
-        <div>Loading</div>
+        ))}
+      {isLoading && (
+        <div className="text-lg font-bold text-primary">Loading</div>
       )}
 
       {hasNextPage && (
