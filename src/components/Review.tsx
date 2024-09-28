@@ -44,7 +44,7 @@ const Review = ({ review }: { review: ReviewType }) => {
   };
 
   return (
-    <Card className="my-2 flex items-center justify-between border border-card-foreground sm:w-[512px]">
+    <Card className="my-2 flex-row items-center justify-between border border-card-foreground sm:flex sm:w-[512px]">
       <CardContent>
         <CardHeader>
           <Link href={`/review/${review.id}`}>
@@ -61,10 +61,18 @@ const Review = ({ review }: { review: ReviewType }) => {
         </CardFooter>
       </CardContent>
       <CardContent>
-        <CardContent>
-          <div onClick={handleLike}>Like</div>
-        </CardContent>
-        <CardContent>{review.likes.length} Like/s</CardContent>
+        <div className="flex flex-col items-center justify-center gap-2 text-center">
+          <div
+            onClick={handleLike}
+            className="cursor-pointer rounded-md border border-primary bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-white"
+          >
+            Like
+          </div>
+
+          <div className="text-sm text-muted-foreground">
+            {review.likes.length} {review.likes.length === 1 ? "Like" : "Likes"}
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
