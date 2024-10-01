@@ -32,7 +32,10 @@ export async function GET(req: Request) {
       }),
       { status: 200 },
     );
-  } catch (error) {
-    return new Response("Something went wrong.", { status: 500 });
+  } catch (error: any) {
+    return new Response(
+      JSON.stringify({ message: error?.message || "Something went wrong." }),
+      { status: 500 },
+    );
   }
 }
