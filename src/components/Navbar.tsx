@@ -1,6 +1,7 @@
 import { getServerAuthSession } from "~/server/auth";
 import SignIn from "./SignIn";
 import Link from "next/link";
+import UserNav from "./UserNav";
 
 const Navbar = async () => {
   const session = await getServerAuthSession();
@@ -11,7 +12,7 @@ const Navbar = async () => {
       <Link className="hidden sm:block" href="/">
         ReviewThings
       </Link>
-      {session ? <div>{session?.user.name}</div> : <SignIn />}
+      {session ? <UserNav user={session.user} /> : <SignIn />}
     </nav>
   );
 };
